@@ -18,6 +18,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -30,6 +31,10 @@ public class Question {
 	@NotBlank
 	private String text;
 	
+	@Transient
+	@NotBlank(message="There must be at least one tag!")
+	private String tagInput;
+
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private Date createdAt;
@@ -97,5 +102,21 @@ public class Question {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+	
+	public String getTagInput() {
+		return tagInput;
+	}
+
+	public void setTagInput(String tagInput) {
+		this.tagInput = tagInput;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 }

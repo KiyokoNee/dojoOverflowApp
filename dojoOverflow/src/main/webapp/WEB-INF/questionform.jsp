@@ -20,6 +20,18 @@
 	<body>
 		<h1>What is your question?</h1>
 		<a href="/">Dashboard</a>
-		<p>Form goes here</p>
+		<form:form class="full-form" modelAttribute="newQuestion" method="post" action="/questions/add" >
+			<span class="text-danger"><form:errors path="text" /></span>
+			<div class="d-flex justify-content-between">
+				<form:label path="text">Question: </form:label>
+				<form:input path="text" />
+			</div>	
+			<span class="text-danger"><form:errors path="tagInput" /></span>
+			<div class="d-flex justify-content-between">
+				<form:label path="tagInput">Author: </form:label>
+				<form:input path="tagInput" />
+			</div>
+			<button class="btn btn-primary float-end" type="submit">Submit</button>
+		</form:form>
 	</body>
 </html>

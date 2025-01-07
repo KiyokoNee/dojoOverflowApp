@@ -30,6 +30,11 @@
 				<c:forEach var="question" items="${questions}">
 					<tr>
 						<th><a href="/questions/${question.id}"><c:out value="${question.text}"></c:out></a></th>
+						<th>
+							<c:forEach var="tag" items="${question.tags}" varStatus="loop">
+								<c:out value="${tag.subject}"></c:out><c:if test="${loop.index < question.tags.size()-1}">,</c:if>
+							</c:forEach>
+						</th>
 					</tr>
 				</c:forEach>
 			</tbody>

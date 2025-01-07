@@ -48,6 +48,14 @@ public class Tag {
 		this.createdAt = new Date();
 	}
 	
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
